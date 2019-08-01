@@ -15,21 +15,27 @@ import android.widget.Toast;
 
 import com.example.dell.iehttp.IeHttp.LeHttp;
 import com.example.dell.iehttp.IeHttp.LeJsonDataTransform;
+import com.example.dell.iehttp.IeHttp.StringUtils;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private String url = "http://ip.taobao.com/service/getIpInfo2.php?ip=myip";
-
+    private byte[] data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        HashMap<String,String> map = new HashMap<>();
+        map.put("param1","value1");
+        map.put("param2","value2");
+        data = StringUtils.builderUrlParams(map);
         sendRequest();
     }
 
     private void sendRequest(){
-        LeHttp.sendJsonRequest(url, null, ResposeCalss.class, new LeJsonDataTransform<ResposeCalss>() {
+        LeHttp.sendJsonRequest(url, data, ResposeCalss.class, new LeJsonDataTransform<ResposeCalss>() {
             @Override
             public void onSuccess(ResposeCalss m) {
                 Log.e("test", m.toString());

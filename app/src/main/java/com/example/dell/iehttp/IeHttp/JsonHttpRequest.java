@@ -31,7 +31,7 @@ public class JsonHttpRequest implements LeHttpRequest{
     private HttpURLConnection urlConnection;
     @Override
     public void execute() {
-        URL url= null;
+        URL url;
 
         try {
             url = new URL(this.url);
@@ -57,7 +57,6 @@ public class JsonHttpRequest implements LeHttpRequest{
                 callbackListener.onSuccess(in);
             }
             else {
-
                 throw new RuntimeException("请求失败");
             }
         }catch (Exception e){
@@ -67,6 +66,5 @@ public class JsonHttpRequest implements LeHttpRequest{
         }finally {
             urlConnection.disconnect();
         }
-
     }
 }
