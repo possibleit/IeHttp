@@ -22,6 +22,10 @@ public class JsonCallbackListener<T> implements CallbackListener {
         this.leJsonDataTransform = leJsonDataTransform;
     }
 
+    public void setLeJsonDataTransform(LeJsonDataTransform leJsonDataTransform) {
+        this.leJsonDataTransform = leJsonDataTransform;
+    }
+
     @Override
     public void onSuccess(InputStream inputStream) {
         String response = getContent(inputStream);

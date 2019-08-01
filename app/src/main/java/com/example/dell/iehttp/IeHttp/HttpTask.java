@@ -2,24 +2,28 @@ package com.example.dell.iehttp.IeHttp;
 
 import com.alibaba.fastjson.JSON;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
-public class HttpTask<T> implements Runnable,Delayed {
+public class HttpTask implements Runnable,Delayed {
 
     private LeHttpRequest leHttpRequest;
 
-    public HttpTask(String url,T requestData,LeHttpRequest leHttpRequest,CallbackListener callbackListener){
+    public HttpTask(String url, Map<String,String> requestData, Map<String, File> file_map, LeHttpRequest leHttpRequest, CallbackListener callbackListener){
         this.leHttpRequest = leHttpRequest;
         leHttpRequest.setUrl(url);
         leHttpRequest.setListener(callbackListener);
-        String content = JSON.toJSONString(requestData);
-        try {
-            leHttpRequest.setData(content.getBytes("utf-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        leHttpRequest.setFile(file_map);
+        leHttpRequest.setData(requestData);
+//        String content = JSON.toJSONString(requestData);
+//        try {
+//            leHttpRequest.setData(content.getBytes("utf-8"));
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

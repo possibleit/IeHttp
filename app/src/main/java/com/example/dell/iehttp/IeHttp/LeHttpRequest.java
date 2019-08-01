@@ -1,10 +1,15 @@
 package com.example.dell.iehttp.IeHttp;
 
+import java.io.File;
+import java.util.Map;
+
 public interface LeHttpRequest {
 
     void setUrl(String url);
 
-    void setData(byte[] data);
+    void setData(Map<String,String> data);
+
+    void setFile(Map<String, File> file_map);
 
     void setListener(CallbackListener callbackListener);
 
