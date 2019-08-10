@@ -14,3 +14,20 @@ listener 回调接口
   
 目前只实现了jsonRequest,如需要使用类似于xmlRequest，请自定义一个实现了LeHttpRequest的类  
 目前只能接受返回的JavaBean，不能接受List<JavaBean>，如有需求可以更改JsonCallbackListener类第32行
+
+---
+
+使用方法  
+在项目的root 的build.gradle文件中添加
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+在module的build.gradle文件中添加
+```
+implementation 'com.github.possibleit:IeHttp:v1.0'
+```
