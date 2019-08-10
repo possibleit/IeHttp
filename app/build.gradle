@@ -1,10 +1,9 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.icodeu'
+apply plugin: 'com.android.application'
+
 android {
     compileSdkVersion 28
     defaultConfig {
-//        applicationId "com.example.dell.iehttp"
+        applicationId "com.example.dell.iehttp"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
